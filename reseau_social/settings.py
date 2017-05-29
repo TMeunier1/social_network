@@ -25,13 +25,19 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
 
     'djangobower',
     'compressor',
     'sass_processor',
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
 
     'people',
 ]
+
+SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,6 +66,12 @@ TEMPLATES = [
         },
     },
 ]
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+)
+
 
 WSGI_APPLICATION = 'reseau_social.wsgi.application'
 
@@ -127,6 +139,9 @@ STATICFILES_FINDERS = (
     'sass_processor.finders.CssFinder',
 )
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "people", "static", "image")
+MEDIA_URL = "/static/image/"
+
 BOWER_COMPONENTS_ROOT = os.path.join(BASE_DIR, "static")
 
 
@@ -141,3 +156,7 @@ SASS_PROCESSOR_INCLUDE_DIRS = [
     os.path.join(BASE_DIR, "static", "bower_components", "bootstrap-sass", "assets", "stylesheets")
 
 ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_REDIRECT_URL = '/'
