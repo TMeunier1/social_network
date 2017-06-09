@@ -5,6 +5,7 @@
 <head>
     <meta charset="utf-8">
     <link href="{% sass_src '_base.scss' %}" rel="stylesheet" type="text/css" />
+    <link href="{% static 'bootstrap-tagsinput-latest/src/bootstrap-tagsinput.css' %}" rel="stylesheet">
     <title>{% block title %}{% endblock %}</title>
 </head>
 
@@ -20,6 +21,8 @@
     </header>
     {% block content %} {% endblock %}
     <script src="{% static 'jquery/dist/jquery.js' %}" charset="utf-8"></script>
+    <script src="{% static 'script.js' %}" charset="utf-8"></script>
+    <script src="{% static 'bootstrap-tagsinput-latest/src/bootstrap-tagsinput.js'%}" charset="utf-8"></script>
     {% block script %} {% endblock %}
 </body>
 

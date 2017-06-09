@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+{% block title %}
+{% endblock %}
+{% block content %}
+<h1>Profil de {{ profile.user }} !</h1>
+<h2>Ville : {{ profile.city }}</h2>
+<h2>website : {{ profile.website }}</h2>
+<h2>ZipCode : {{ profile.zipcode }}</h2>
+<h2>skills : {% for skill in profile.skills.all %}{{skill}}{%endfor%}</h2>
+<h2>interests : {{ profile.interests }}</h2>
+{% endblock %}

@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'allauth.socialaccount',
+    'taggit',
 
     'people',
 ]
@@ -127,7 +128,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'static/'
 
 STATICFILES_DIRS = [
-os.path.join(BASE_DIR, 'reseau_social', 'static', 'sass'),
+    os.path.join(BASE_DIR, 'reseau_social', 'static', 'sass'),
 ]
 
 STATICFILES_FINDERS = (
