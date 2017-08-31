@@ -1,0 +1,102 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2017-06-15 15:29+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: people/models.py:24 people/templates/people/profile_detail.html:16
+msgid "ZipCode"
+msgstr ""
+
+#: people/models.py:25 people/templates/people/profile_detail.html:14
+msgid "City"
+msgstr ""
+
+#: people/models.py:26 people/templates/people/profile_detail.html:15
+msgid "Website"
+msgstr ""
+
+#: people/models.py:27
+msgid "avatar"
+msgstr ""
+
+#: people/models.py:28
+msgid "Skills"
+msgstr ""
+
+#: people/models.py:29
+msgid "Interests"
+msgstr ""
+
+#: people/models.py:32 people/templates/people/profile_detail.html:19
+msgid "Biography"
+msgstr ""
+
+#: people/templates/people/profile_detail.html:13
+msgid "Profile of"
+msgstr ""
+
+#: people/templates/people/profile_detail.html:18
+msgid "interests"
+msgstr ""
+
+#: people/templates/people/profile_map.html:4
+msgid "MAP"
+msgstr ""
+
+#: people/templates/people/profile_map.html:12
+msgid "Hello map"
+msgstr ""
+
+#: reseau_social/settings.py:127
+msgid "French"
+msgstr ""
+
+#: reseau_social/settings.py:128
+msgid "English"
+msgstr ""
+
+#: reseau_social/templates/base.html:23
+msgid "Hello"
+msgstr ""
+
+#: reseau_social/templates/base.html:24
+msgid "Disconnect"
+msgstr ""
+
+#: reseau_social/templates/base.html:26
+msgid "Log in"
+msgstr ""
+
+#: reseau_social/templates/base.html:27
+msgid "Create account"
+msgstr ""
+
+#: reseau_social/templates/base.html:29
+msgid "Social Network"
+msgstr ""
+
+#: reseau_social/templates/base.html:32
+msgid "Members"
+msgstr ""
+
+#: reseau_social/templates/base.html:35
+msgid "My Profile"
+msgstr ""
+
+#: reseau_social/templates/base.html:38
+msgid "My account"
+msgstr ""

@@ -2,9 +2,11 @@
 {% block title %}
 {% endblock %}
 {% block content %}
+<main>
 <form method="post">
   {% csrf_token %}
   {{ form }}
   <input type="submit"/>
 </form>
+</main>
 {% endblock %}

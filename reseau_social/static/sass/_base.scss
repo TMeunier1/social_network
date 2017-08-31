@@ -1,2 +1,41 @@
 @import "bootstrap";
-@import "homepage";
+
+$primarycolor: #DEDEDE;
+$secondarycolor: #707070;
+$tertiarycolor: #18B5AD;
+
+body {
+    background-color: $primarycolor;
+    color: $tertiarycolor;
+    header {
+        nav {
+
+        }
+    }
+    header {
+        text-align: center;
+        h1 {
+            padding: 0.5em;
+            text-align: center;
+            background-color: $tertiarycolor;
+            border: 1px solid black;
+            a, a:visited, a:active, a:hover {
+                color: black;
+            }
+        }
+        .col-xs-4 {
+            a, a:visited, a:active, a:hover {
+                color: black;
+            }
+            padding: 1em;
+            background-color: $secondarycolor;
+            border: 1px solid black;
+            box-shadow: 5px 5px 0 0;
+        }
+    }
+    main {
+        #mapid {
+            height: 800px;
+        }
+    }
+}

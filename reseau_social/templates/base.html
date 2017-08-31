@@ -1,29 +1,74 @@
-{% load sass_tags %} {% load static %}
+{% load sass_tags %} {% load static %}  {% load i18n %}
 <!DOCTYPE html>
 <html>
 
 <head>
     <meta charset="utf-8">
+    {% block style %}
     <link href="{% sass_src '_base.scss' %}" rel="stylesheet" type="text/css" />
+    {% endblock %}
     <link href="{% static 'bootstrap-tagsinput-latest/src/bootstrap-tagsinput.css' %}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
+    integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
+    crossorigin=""/>
+    <link rel="stylesheet" href="{% static 'bower_components/EasyAutocomplete/dist/easy-autocomplete.css' %}">
     <title>{% block title %}{% endblock %}</title>
 </head>
 
 <body>
-    <header>
-        <nav>
-            {% if request.user.is_authenticated %}
-            <h2>Salut {{ request.user }} ! </h2>
-            <a href="{% url 'account_logout' %}">Log out</a> {% else %}
-            <a href="{%  url 'account_login' %}">Log In</a>
-            <a href="{% url 'account_signup' %}">Create account</a> {% endif %}
-        </nav>
-    </header>
+    <div class="container">
+        <header>
+            <nav>
+                {% if request.user.is_authenticated %}
+                <h2>{% trans "Hello" %} {{ request.user }} !</h2>
+                <a href="{% url 'account_logout' %}">{% trans "Disconnect" %}</a>
+                {% else %}
+                <a href="{%  url 'account_login' %}">{% trans "Log in" %}</a>
+                <a href="{% url 'account_signup' %}">{% trans "Create account" %}</a> {% endif %}
+            </nav>
+                <h1 class="row"><a href="/">{% trans "Social Network" %}</a></h1>
+            <div class="row">
+                <div class="col-xs-4">
+                    <a href="{% url 'list' %}">{% trans "Members" %}</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="/profil/{{ request.user }}">{% trans "My Profile" %}</a>
+                </div>
+                <div class="col-xs-4">
+                    <a href="/profil/{{ request.user }}/edit">{% trans "My account" %}</a>
+                </div>
+                <input id="search"/>
+            </div>
+        </header>
     {% block content %} {% endblock %}
+    </div>
     <script src="{% static 'jquery/dist/jquery.js' %}" charset="utf-8"></script>
+    <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
+    integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
+    crossorigin=""></script>
     <script src="{% static 'script.js' %}" charset="utf-8"></script>
     <script src="{% static 'bootstrap-tagsinput-latest/src/bootstrap-tagsinput.js'%}" charset="utf-8"></script>
+    <script src="{% static 'bower_components/EasyAutocomplete/dist/jquery.easy-autocomplete.js' %}"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $.getJSON("{% url 'list' %}", function(data) {
+            var options = {
+                data: data["profile"],
+                getValue: "username",
+                list: {
+                    match: {
+                        enabled: true
+                    },
+                    onKeyEnterEvent: function(){
+                        var name = $("#search").getSelectedItemData().username;
+                        window.open("/profil/" + name)
+                    }
+                },
+            };
+            $("#search").easyAutocomplete(options);
+        })
+    });
+    </script>
     {% block script %} {% endblock %}
 </body>
-
 </html>

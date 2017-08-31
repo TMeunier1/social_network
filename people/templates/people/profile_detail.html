@@ -1,11 +1,22 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
 {% block title %}
+Profil
+{% endblock %}
+{% block style %}
+{{ block.super }}
+<link href="{% static '_profile.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block content %}
-<h1>Profil de {{ profile.user }} !</h1>
-<h2>Ville : {{ profile.city }}</h2>
-<h2>website : {{ profile.website }}</h2>
-<h2>ZipCode : {{ profile.zipcode }}</h2>
-<h2>skills : {% for skill in profile.skills.all %}{{skill}}{%endfor%}</h2>
-<h2>interests : {{ profile.interests }}</h2>
+<main>
+<h1>{% trans "Profile of" %}  {{ profile.user }} !</h1>
+<h2>{% trans "City" %} : {{ profile.city }}</h2>
+<h2>{% trans "Website" %} : {{ profile.website }}</h2>
+<h2>{% trans "ZipCode" %} : {{ profile.zipcode }}</h2>
+<h2>{% trans skills %} : {% for skill in profile.skills.all %} {{ skill }} {% endfor %}</h2>
+<h2>{% trans "interests" %} : {% for interest in profile.interests.all %} {{ interest }} {% endfor %}</h2>
+<h2>{% trans "Biography"%} :</h2>
+<p>{{profile.bio}}</p>
+</main>
 {% endblock %}

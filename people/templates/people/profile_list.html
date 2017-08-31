@@ -1,10 +1,18 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block title %}
+Liste des membres
+{% endblock %}
+{% block style %}
+{{ block.super }}
+<link href="{% static '_list.scss' %}" rel="stylesheet" type="text/css" />
 {% endblock %}
 {% block content %}
+<main>
 <ul>
 {% for profile in profile_list %}
     <li><a href="{% url 'profile-detail' profile.user %}">{{ profile.user }}</a></li>
 {% endfor %}
 </ul>
+</main>
 {% endblock %}

@@ -1,7 +1,12 @@
 import os
+from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+LOCALE_PATHS = (
+    os.path.join(BASE_DIR, "locale"),
+)
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
+    'django.contrib.gis',
 
     'djangobower',
     'compressor',
@@ -34,6 +40,7 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'taggit',
+    'hvad',
 
     'people',
 ]
@@ -42,6 +49,7 @@ SITE_ID = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -63,6 +71,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'django.template.context_processors.i18n',
             ],
         },
     },
@@ -82,8 +91,10 @@ WSGI_APPLICATION = 'reseau_social.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'django_rs',
+        'USER': 'toto',
+        'PASSWORD' : 'iwillbecomeveristronk'
     }
 }
 
@@ -112,6 +123,11 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'fr-FR'
 
+LANGUAGES = [
+    ('fr', _('French')),
+    ('en', _('English')),
+]
+
 TIME_ZONE = 'CET'
 
 USE_I18N = True
@@ -128,6 +144,7 @@ STATIC_URL = '/static/'
 STATIC_ROOT = 'static/'
 
 STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static', 'sass'),
     os.path.join(BASE_DIR, 'reseau_social', 'static', 'sass'),
 ]
 
@@ -150,6 +167,7 @@ BOWER_INSTALLED_APPS = (
     'jquery',
     'font-awesome',
     'bootstrap-sass',
+    'EasyAutocomplete',
 )
 
 SASS_PROCESSOR_INCLUDE_DIRS = [

@@ -5817,16 +5817,23 @@ button.close {
 body {
   background-color: #DEDEDE;
   color: #18B5AD; }
-  body main {
+  body header {
     text-align: center; }
-    body main h1 {
+    body header h1 {
+      padding: 0.5em;
       text-align: center;
-      color: black;
       background-color: #18B5AD;
       border: 1px solid black; }
-    body main .col-xs-4 {
+      body header h1 a, body header h1 a:visited, body header h1 a:active, body header h1 a:hover {
+        color: black; }
+    body header .col-xs-4 {
+      padding: 1em;
       background-color: #707070;
       border: 1px solid black;
       box-shadow: 5px 5px 0 0; }
+      body header .col-xs-4 a, body header .col-xs-4 a:visited, body header .col-xs-4 a:active, body header .col-xs-4 a:hover {
+        color: black; }
+  body main #mapid {
+    height: 800px; }
 
 /*# sourceMappingURL=../../../../../../../../static/_base.css.map */
